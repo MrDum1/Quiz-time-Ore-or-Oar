@@ -47,7 +47,7 @@
                 android:layout_height="75sp"
                 android:gravity="center"
                 android:textSize="20sp"
-                android:hint="Option 1"/>
+                android:text="Ore"/>
 
         </LinearLayout>
 
@@ -69,10 +69,18 @@
                     android:layout_height="75sp"
                     android:gravity="center"
                     android:textSize="20sp"
-                    android:hint="Option 2"/>
+                    android:text="Oar"/>
 
         </LinearLayout>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="200sp"
+        android:layout_height="50sp"
+        android:layout_margin="50sp"
+        android:textSize="20sp"
+        android:text="Submit"/>
 
 </LinearLayout>
