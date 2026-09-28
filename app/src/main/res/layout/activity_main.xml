@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -28,50 +29,22 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <LinearLayout
+        <Button
             android:id="@+id/Option1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true">
+            android:layout_width="300sp"
+            android:layout_height="75sp"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="Ore"/>
 
-            <Button
-                android:layout_width="75sp"
-                android:layout_height="75sp"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:text="A"
-                android:layout_marginRight="20sp"/>
-
-            <Button
-                android:layout_width="250sp"
-                android:layout_height="75sp"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:text="Ore"/>
-
-        </LinearLayout>
-
-        <LinearLayout
+        <Button
             android:id="@+id/Option2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true">
+            android:layout_width="300sp"
+            android:layout_height="75sp"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:text="Oar"/>
 
-                <Button
-                    android:layout_width="75sp"
-                    android:layout_height="75sp"
-                    android:textSize="20sp"
-                    android:text="B"
-                    android:layout_marginRight="20sp"/>
-
-                <Button
-                    android:layout_width="250sp"
-                    android:layout_height="75sp"
-                    android:gravity="center"
-                    android:textSize="20sp"
-                    android:text="Oar"/>
-
-        </LinearLayout>
 
     </LinearLayout>
 

@@ -10,8 +10,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.ImageView;
 import android.widget.Toast;
 import java.util.ArrayList;
@@ -20,12 +18,13 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     ImageView Img;
-    LinearLayout Option1,Option2;
+    Button Option1,Option2;
     Button Submit;
 
     List<Quizz> questionList;
     int currentQid = 0;
     int selectedAnswer;
+    boolean next = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,18 +57,25 @@ public class MainActivity extends AppCompatActivity {
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Quizz currentQuestion = questionList.get(currentQid);
-                if (selectedAnswer == currentQuestion.getCorrectanswer()){
-                    Toast.makeText(MainActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
+                if(next) {
+                    next = false;
+                    Quizz currentQuestion = questionList.get(currentQid);
+                    if (selectedAnswer == currentQuestion.getCorrectanswer()) {
+                        Toast.makeText(MainActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(MainActivity.this, "False", Toast.LENGTH_SHORT).show();
+                    }
+                    Img.setImageResource(questionList.get(currentQid).getFimgid());
+                    Submit.setText("Next");
                 } else {
-                    Toast.makeText(MainActivity.this, "False", Toast.LENGTH_SHORT).show();
-                }
-
-                currentQid++;
-                if (currentQid < questionList.size()) {
-                    displayQuestion();
-                }else {
-                    Toast.makeText(MainActivity.this, "Quiz Finished", Toast.LENGTH_SHORT).show();
+                    currentQid++;
+                    if (currentQid < questionList.size()) {
+                        displayQuestion();
+                        next = true;
+                        Submit.setText("Submit");
+                    } else {
+                        Toast.makeText(MainActivity.this, "Quiz Finished", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
@@ -79,10 +85,10 @@ public class MainActivity extends AppCompatActivity {
 
     void loadQuestion(){
         questionList = new ArrayList<>();
-        questionList.add(new Quizz(R.drawable.oar1crop, 2));
-        questionList.add(new Quizz(R.drawable.ore2crop, 1));
-        questionList.add(new Quizz(R.drawable.ore1crop, 1));
-        questionList.add(new Quizz(R.drawable.oar2crop, 2));
+        questionList.add(new Quizz(R.drawable.oar1crop,R.drawable.oar1full, 2));
+        questionList.add(new Quizz(R.drawable.ore2crop,R.drawable.ore2full, 1));
+        questionList.add(new Quizz(R.drawable.ore1crop,R.drawable.ore1full, 1));
+        questionList.add(new Quizz(R.drawable.oar2crop,R.drawable.oar2full,2));
     }
 
     void displayQuestion(){
