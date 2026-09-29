@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     List<Quizz> questionList;
     int currentQid = 0;
-    int selectedAnswer;
+    int selectedAnswer = -1;
     boolean next = true;
 
     @Override
@@ -58,21 +58,26 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(next) {
-                    next = false;
-                    Quizz currentQuestion = questionList.get(currentQid);
-                    if (selectedAnswer == currentQuestion.getCorrectanswer()) {
-                        Toast.makeText(MainActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(MainActivity.this, "False", Toast.LENGTH_SHORT).show();
+                    if(selectedAnswer == -1) {
+                        Toast.makeText(MainActivity.this, "Please Pick an option.", Toast.LENGTH_SHORT).show();
+                    }else {
+                        next = false;
+                        Quizz currentQuestion = questionList.get(currentQid);
+                        if (selectedAnswer == currentQuestion.getCorrectanswer()) {
+                            Toast.makeText(MainActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(MainActivity.this, "False", Toast.LENGTH_SHORT).show();
+                        }
+                        Img.setImageResource(questionList.get(currentQid).getFimgid());
+                        Submit.setText("Next");
                     }
-                    Img.setImageResource(questionList.get(currentQid).getFimgid());
-                    Submit.setText("Next");
                 } else {
                     currentQid++;
                     if (currentQid < questionList.size()) {
                         displayQuestion();
                         next = true;
                         Submit.setText("Submit");
+                        selectedAnswer = -1;
                     } else {
                         Toast.makeText(MainActivity.this, "Quiz Finished", Toast.LENGTH_SHORT).show();
                     }
@@ -92,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void displayQuestion(){
-
         Quizz question = questionList.get(currentQid);
         Img.setImageResource(question.getImgid());
     }
