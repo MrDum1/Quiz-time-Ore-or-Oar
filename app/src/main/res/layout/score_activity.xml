@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="top|center"
+    android:orientation="vertical"
+    android:background="#150b26">
+
+    <TextView
+        android:layout_width="350sp"
+        android:layout_height="80sp"
+        android:gravity="center"
+        android:layout_marginTop="100dp"
+        android:textSize="55sp"
+        android:textColor="#FFFFFF"
+        android:text="Your Score is:"/>
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="300sp"
+        android:layout_height="300sp"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        android:textSize="250sp"
+        android:textColor="#FFFFFF"
+        android:text="00"/>
+
+    <Button
+        android:id="@+id/New"
+        android:layout_width="250sp"
+        android:layout_height="100sp"
+        android:gravity="center"
+        android:layout_marginTop="50sp"
+        android:textSize="30dp"
+        android:textColor="#FFFFFF"
+        android:text="New Quizz"/>
+
+</LinearLayout>

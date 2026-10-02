@@ -2,6 +2,7 @@ package edu.bpi.quiztime;
 
 import android.os.Bundle;
 
+import android.content.Intent;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     int currentQid = 0;
     int selectedAnswer = -1;
     boolean next = true;
+    int score = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                         Quizz currentQuestion = questionList.get(currentQid);
                         if (selectedAnswer == currentQuestion.getCorrectanswer()) {
                             Toast.makeText(MainActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
+                            score++;
                         } else {
                             Toast.makeText(MainActivity.this, "False", Toast.LENGTH_SHORT).show();
                         }
@@ -80,6 +83,9 @@ public class MainActivity extends AppCompatActivity {
                         selectedAnswer = -1;
                     } else {
                         Toast.makeText(MainActivity.this, "Quiz Finished", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, ScoreActivity.class);
+                        intent.putExtra("score", score);
+                        startActivity(intent);
                     }
                 }
             }
@@ -93,11 +99,14 @@ public class MainActivity extends AppCompatActivity {
         questionList.add(new Quizz(R.drawable.oar1crop,R.drawable.oar1full, 2));
         questionList.add(new Quizz(R.drawable.ore2crop,R.drawable.ore2full, 1));
         questionList.add(new Quizz(R.drawable.ore1crop,R.drawable.ore1full, 1));
-        questionList.add(new Quizz(R.drawable.oar2crop,R.drawable.oar2full,2));
+        questionList.add(new Quizz(R.drawable.oar2crop,R.drawable.oar2full, 2));
+        questionList.add(new Quizz(R.drawable.ore3crop,R.drawable.ore3full, 1));
+        questionList.add(new Quizz(R.drawable.oar3crop,R.drawable.oar3full, 2));
     }
 
     void displayQuestion(){
         Quizz question = questionList.get(currentQid);
         Img.setImageResource(question.getImgid());
     }
+
 }

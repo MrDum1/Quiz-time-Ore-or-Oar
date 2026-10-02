@@ -20,7 +20,5 @@ public class Quizz {
         return fimgid;
     }
 
-    public int getCorrectanswer() {
-        return correctanswer;
-    }
+    public int getCorrectanswer() { return correctanswer; }
 }
