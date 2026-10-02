@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     List<Quizz> questionList;
     int currentQid = 0;
     int selectedAnswer = -1;
-    boolean next = true;
+    boolean next = false;
     boolean finished = false;
     int score = 0;
 
@@ -65,11 +65,11 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("score", score);
                     startActivity(intent);
                 } else {
-                    if (next) {
+                    if (!next) {
                         if (selectedAnswer == -1) {
                             Toast.makeText(MainActivity.this, "Please Pick an option.", Toast.LENGTH_SHORT).show();
                         } else {
-                            next = false;
+                            next = true;
                             Quizz currentQuestion = questionList.get(currentQid);
                             if (selectedAnswer == currentQuestion.getCorrectanswer()) {
                                 Toast.makeText(MainActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                         currentQid++;
                         if (currentQid < questionList.size()) {
                             displayQuestion();
-                            next = true;
+                            next = false;
                             Submit.setText("Submit");
                             selectedAnswer = -1;
                         } else {
