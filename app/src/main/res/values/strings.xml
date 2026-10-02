@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Quiz time</string>
+    <string name="ore">Ore</string>
+    <string name="oar">Oar</string>
 </resources>

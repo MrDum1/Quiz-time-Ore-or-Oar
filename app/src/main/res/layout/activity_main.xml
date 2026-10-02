@@ -36,7 +36,7 @@
             android:layout_height="75sp"
             android:gravity="center"
             android:textSize="20sp"
-            android:text="Ore"/>
+            android:text="ore"/>
 
         <Button
             android:id="@+id/Option2"
@@ -44,16 +44,24 @@
             android:layout_height="75sp"
             android:gravity="center"
             android:textSize="20sp"
-            android:text="Oar"/>
+            android:text="oar"/>
 
 
     </LinearLayout>
 
     <Button
+        android:id="@+id/hint"
+        android:layout_width="220sp"
+        android:layout_height="60sp"
+        android:layout_margin="5sp"
+        android:textSize="20sp"
+        android:text="Hint"/>
+
+    <Button
         android:id="@+id/submit"
         android:layout_width="200sp"
         android:layout_height="55sp"
-        android:layout_margin="50sp"
+        android:layout_margin="25sp"
         android:textSize="20sp"
         android:text="Submit"/>
 

@@ -20,12 +20,13 @@ public class MainActivity extends AppCompatActivity {
 
     ImageView Img;
     Button Option1,Option2;
+    Button Hint;
     Button Submit;
 
     List<Quizz> questionList;
     int currentQid = 0;
     int selectedAnswer = -1;
-    boolean next = true;
+    boolean next = false;
     boolean finished = false;
     int score = 0;
 
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         Img = findViewById(R.id.Img);
         Option1 = findViewById(R.id.Option1);
         Option2 = findViewById(R.id.Option2);
+        Hint = findViewById(R.id.hint);
         Submit = findViewById(R.id.submit);
 
         loadQuestion();
@@ -65,11 +67,11 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("score", score);
                     startActivity(intent);
                 } else {
-                    if (next) {
+                    if (!next) {
                         if (selectedAnswer == -1) {
                             Toast.makeText(MainActivity.this, "Please Pick an option.", Toast.LENGTH_SHORT).show();
                         } else {
-                            next = false;
+                            next = true;
                             Quizz currentQuestion = questionList.get(currentQid);
                             if (selectedAnswer == currentQuestion.getCorrectanswer()) {
                                 Toast.makeText(MainActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
@@ -84,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                         currentQid++;
                         if (currentQid < questionList.size()) {
                             displayQuestion();
-                            next = true;
+                            next = false;
                             Submit.setText("Submit");
                             selectedAnswer = -1;
                         } else {
@@ -97,17 +99,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Hint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Img.setImageResource(questionList.get(currentQid).getHimgid());
+            }
+        });
 
     }
 
+
     void loadQuestion(){
         questionList = new ArrayList<>();
-        questionList.add(new Quizz(R.drawable.oar1crop,R.drawable.oar1full, 2));
-        questionList.add(new Quizz(R.drawable.ore2crop,R.drawable.ore2full, 1));
-        questionList.add(new Quizz(R.drawable.ore1crop,R.drawable.ore1full, 1));
-        questionList.add(new Quizz(R.drawable.oar2crop,R.drawable.oar2full, 2));
-        questionList.add(new Quizz(R.drawable.ore3crop,R.drawable.ore3full, 1));
-        questionList.add(new Quizz(R.drawable.oar3crop,R.drawable.oar3full, 2));
+        questionList.add(new Quizz(R.drawable.oar1crop,R.drawable.oar1full,R.drawable.oar1hint, 2));
+        questionList.add(new Quizz(R.drawable.ore2crop,R.drawable.ore2full,R.drawable.ore2hint, 1));
+        questionList.add(new Quizz(R.drawable.ore1crop,R.drawable.ore1full,R.drawable.ore1hint, 1));
+        questionList.add(new Quizz(R.drawable.oar2crop,R.drawable.oar2full,R.drawable.oar2hint, 2));
+        questionList.add(new Quizz(R.drawable.ore3crop,R.drawable.ore3full,R.drawable.ore3hint, 1));
+        questionList.add(new Quizz(R.drawable.oar3crop,R.drawable.oar3full,R.drawable.oar3hint, 2));
     }
 
     void displayQuestion(){
