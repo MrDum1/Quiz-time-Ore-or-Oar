@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     int currentQid = 0;
     int selectedAnswer = -1;
     boolean next = true;
+    boolean finished = false;
     int score = 0;
 
     @Override
@@ -59,33 +60,38 @@ public class MainActivity extends AppCompatActivity {
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(next) {
-                    if(selectedAnswer == -1) {
-                        Toast.makeText(MainActivity.this, "Please Pick an option.", Toast.LENGTH_SHORT).show();
-                    }else {
-                        next = false;
-                        Quizz currentQuestion = questionList.get(currentQid);
-                        if (selectedAnswer == currentQuestion.getCorrectanswer()) {
-                            Toast.makeText(MainActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
-                            score++;
-                        } else {
-                            Toast.makeText(MainActivity.this, "False", Toast.LENGTH_SHORT).show();
-                        }
-                        Img.setImageResource(questionList.get(currentQid).getFimgid());
-                        Submit.setText("Next");
-                    }
+                if(finished){
+                    Intent intent = new Intent(MainActivity.this, ScoreActivity.class);
+                    intent.putExtra("score", score);
+                    startActivity(intent);
                 } else {
-                    currentQid++;
-                    if (currentQid < questionList.size()) {
-                        displayQuestion();
-                        next = true;
-                        Submit.setText("Submit");
-                        selectedAnswer = -1;
+                    if (next) {
+                        if (selectedAnswer == -1) {
+                            Toast.makeText(MainActivity.this, "Please Pick an option.", Toast.LENGTH_SHORT).show();
+                        } else {
+                            next = false;
+                            Quizz currentQuestion = questionList.get(currentQid);
+                            if (selectedAnswer == currentQuestion.getCorrectanswer()) {
+                                Toast.makeText(MainActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
+                                score++;
+                            } else {
+                                Toast.makeText(MainActivity.this, "False", Toast.LENGTH_SHORT).show();
+                            }
+                            Img.setImageResource(questionList.get(currentQid).getFimgid());
+                            Submit.setText("Next");
+                        }
                     } else {
-                        Toast.makeText(MainActivity.this, "Quiz Finished", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(MainActivity.this, ScoreActivity.class);
-                        intent.putExtra("score", score);
-                        startActivity(intent);
+                        currentQid++;
+                        if (currentQid < questionList.size()) {
+                            displayQuestion();
+                            next = true;
+                            Submit.setText("Submit");
+                            selectedAnswer = -1;
+                        } else {
+                            Submit.setText("Finish");
+                            finished = true;
+                            Toast.makeText(MainActivity.this, "Quiz Finished", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
             }

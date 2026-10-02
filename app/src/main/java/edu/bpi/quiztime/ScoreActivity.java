@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,6 +36,7 @@ public class ScoreActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent game = new Intent(ScoreActivity.this, MainActivity.class);
                 startActivity(game);
+                Toast.makeText(ScoreActivity.this, "New game loading",Toast.LENGTH_SHORT).show();
             }
         });
 
