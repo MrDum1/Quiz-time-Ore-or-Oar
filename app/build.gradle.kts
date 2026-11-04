@@ -32,6 +32,7 @@ android {
 }
 
 dependencies {
+    implementation("com.github.bumptech.glide:glide:5.0.9")
     implementation(libs.activity.ktx)
     implementation(libs.appcompat)
     implementation(libs.constraintlayout)
