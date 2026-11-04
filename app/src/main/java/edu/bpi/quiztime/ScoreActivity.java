@@ -55,7 +55,8 @@ public class ScoreActivity extends AppCompatActivity {
         nextGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent game = new Intent(ScoreActivity.this, MainActivity.class);
+                Intent game = new Intent(ScoreActivity.this, MainMenu.class);
+                game.putExtra("score", score);
                 startActivity(game);
                 Toast.makeText(ScoreActivity.this, "New game loading",Toast.LENGTH_SHORT).show();
             }
