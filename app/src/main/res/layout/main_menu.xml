@@ -10,7 +10,8 @@
         android:id="@+id/confetti"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"/>
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +27,7 @@
         android:layout_margin="20sp"
         android:textColor="#FFFFFF"
         android:textSize="65sp"
-        android:text="Oar Or Ore"/>
+        android:text="@string/oar_or_ore"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -40,7 +41,7 @@
             android:gravity="center"
             android:textColor="#FFFFFF"
             android:textSize="45sp"
-            android:text="Previous Score"/>
+            android:text="@string/previous_score"/>
 
         <TextView
             android:id="@+id/pastscore"
@@ -49,7 +50,7 @@
             android:gravity="center"
             android:textColor="#FFFFFF"
             android:textSize="220sp"
-            android:text="0"/>
+            android:text="@string/_0"/>
 
     </LinearLayout>
 
@@ -58,8 +59,8 @@
         android:layout_width="300sp"
         android:layout_height="75sp"
         android:textColor="#FFFFFF"
-        android:textSize="40dp"
-        android:text="Start Quiz"/>
+        android:textSize="40sp"
+        android:text="@string/start_quiz"/>
 
     </LinearLayout>
 
