@@ -17,7 +17,7 @@
         android:textColor="#FFFFFF"
         android:background="#000000"
 
-        android:text="Is it an: Ore or Oar?" />
+        android:text="@string/is_it_an_ore_or_oar" />
 
     <ImageView
         android:id="@+id/Img"
@@ -36,7 +36,7 @@
             android:layout_height="75sp"
             android:gravity="center"
             android:textSize="20sp"
-            android:text="ore"/>
+            android:text="@string/ore"/>
 
         <Button
             android:id="@+id/Option2"
@@ -44,7 +44,7 @@
             android:layout_height="75sp"
             android:gravity="center"
             android:textSize="20sp"
-            android:text="oar"/>
+            android:text="@string/oar"/>
 
 
     </LinearLayout>
@@ -55,7 +55,7 @@
         android:layout_height="60sp"
         android:layout_margin="5sp"
         android:textSize="20sp"
-        android:text="Hint"/>
+        android:text="@string/hint"/>
 
     <Button
         android:id="@+id/submit"
@@ -63,6 +63,6 @@
         android:layout_height="55sp"
         android:layout_margin="25sp"
         android:textSize="20sp"
-        android:text="Submit"/>
+        android:text="@string/submit"/>
 
 </LinearLayout>

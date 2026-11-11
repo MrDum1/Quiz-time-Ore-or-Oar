@@ -6,4 +6,10 @@
     <string name="previous_score">Previous Score</string>
     <string name="_0">0</string>
     <string name="start_quiz">Start Quiz</string>
+    <string name="hint">Hint</string>
+    <string name="submit">Submit</string>
+    <string name="is_it_an_ore_or_oar">Is it an: Ore or Oar?</string>
+    <string name="your_score_is">Your Score is:</string>
+    <string name="_00">00</string>
+    <string name="new_quizz">New Quizz</string>
 </resources>
